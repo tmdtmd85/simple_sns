@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RegisteringController {
 
-  @GetMapping("/register")
+  @GetMapping("/login")
   public String registeringForm(Model model) {
     model.addAttribute("registering", new Registering());
     List<Integer> IntegerList = new ArrayList<>();
@@ -30,7 +30,7 @@ public class RegisteringController {
     model.addAttribute("IntegerList", IntegerList);
     model.addAttribute("MonthList", MonthList);
     model.addAttribute("DayList", DayList);
-    return "register";
+    return "login";
   }
 
   @PostMapping("/register")
