@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
     <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
@@ -10,14 +10,17 @@
         <div class="container mt-3">
             <h2>SNS</h2>
             <div class="shadow p-4 mb-4 bg-white rounded-3">
-                <form action="#">
-                    <div class="mb-3 mt-3">
-                        <label for="email" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="email" placehoder="Enter email" name="email">
-                    </div>
+            	<div th:if="${param.error}">
+		            Invalid username and password.
+		        </div>
+                <form th:action="@{/login}" method="post">
+			        <div class="mb-3 mt-3">
+			        	<label for="username" class="form-label">User Name:</label>
+			        	<input type="text" class="form-control" id="username" name="username" placeholder="Enter username"/>
+			        </div>
                     <div class="mb-3">
                         <label for="pwd" class="form-label">Password:</label>
-                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                        <input type="password" class="form-control" id="pwd" name="password" placeholder="Enter password">
                     </div>
                     <div class="form-check mb-3">
                         <label class="form-check-label">
@@ -26,11 +29,11 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a class="nav-link" href="#" style="color:blue; text-decoration: underline;">forget password</a>
-                               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#register">New Account</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#register">New Account</button>
                 </form>
             </div>
         </div>
-                <!-- The Modal -->
+        <!-- The Modal -->
 		<div class="modal" id="register">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
