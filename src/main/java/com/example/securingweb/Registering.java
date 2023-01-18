@@ -5,6 +5,10 @@ public class Registering {
 	private String name;
 	private String teloremail;
 	private String password;
+	private String year;
+	private String month;
+	private String day;
+	private String gender;
 	
 	public String getSurname() {
 		return surname;
@@ -36,5 +40,37 @@ public class Registering {
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getYear() {
+		return year;
+	}
+	
+	public void setYear(String year) {
+		this.year = year;
+	}
+	
+	public String getMonth() {
+		return month;
+	}
+	
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	
+	public String getDay() {
+		return day;
+	}
+	
+	public void setDay(String day) {
+		this.day = day;
+	}
+	
+	public String getGender() {
+		return gender;
+	}
+	
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 }

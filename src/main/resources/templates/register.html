@@ -58,30 +58,24 @@
                         <div class="row">
                             <div class="col"><input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" th:field="*{password}"><br></div>
                         </div>
-                        <div class="btn-group">
+                        <div class="btn-group">    
                             <div class="row">
                                 <div class="col">
-                                    <select class="form-select" aria-label="Default select example">
-									  <option selected>Open this select menu</option>
-									  <option value="1">One</option>
-									  <option value="2">Two</option>
-									  <option value="3">Three</option>
+                                    <select class="form-select" aria-label="Default select example" th:field="*{year}">
+									  <option value="2023" selected>Year</option>
+									  <option th:each="integer : ${IntegerList}" th:value="${integer}" th:text="${integer}"></option>
 									</select>
                                 </div>
                                 <div class="col">
-                                    <select class="form-select" aria-label="Default select example">
-									  <option selected>Open this select menu</option>
-									  <option value="1">One</option>
-									  <option value="2">Two</option>
-									  <option value="3">Three</option>
+                                    <select class="form-select" aria-label="Default select example" th:field="*{month}">
+									  <option value="1" selected>Month</option>
+									  <option th:value="${month}" th:each="month : ${MonthList}" th:text="${month}"></option>
 									</select>
                                 </div>
                                 <div class="col">
-                                    <select class="form-select" aria-label="Default select example">
-									  <option selected>Open this select menu</option>
-									  <option value="1">One</option>
-									  <option value="2">Two</option>
-									  <option value="3">Three</option>
+                                    <select class="form-select" aria-label="Default select example" th:field="*{day}">
+									  <option value="1" selected>Day</option>
+									  <option th:value="${day}" th:each="day : ${DayList}" th:text="${day}"></option>
 									</select>
                                 </div>
                             </div>
@@ -93,17 +87,17 @@
                             <div class="row">
                                 <div class="col">
                                     <button type="button" class="btn btn-outline-dark">
-                                        Male<input type="radio" name="gender" value="Male">
+                                        Male<input type="radio" name="gender" value="Male" th:field="*{gender}">
                                     </button>
                                 </div>
                                 <div class="col">
                                     <button type="button" class="btn btn-outline-dark">
-                                        Female <input type="radio" name="gender" value="Female">
+                                        Female <input type="radio" name="gender" value="Female" th:field="*{gender}">
                                     </button>
                                 </div>
                                 <div class="col">
                                     <button type="button" class="btn btn-outline-dark">
-                                        Others <input type="radio" name="gender" value="Others">
+                                        Others <input type="radio" name="gender" value="Others" th:field="*{gender}">
                                     </button>
                                 </div>
                             </div>
