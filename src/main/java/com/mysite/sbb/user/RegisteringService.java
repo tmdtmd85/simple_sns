@@ -1,6 +1,7 @@
 package com.mysite.sbb.user;
 
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import lombok.RequiredArgsConstructor;
 
@@ -8,10 +9,11 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class RegisteringService {
 	private final RegisteringRepository registeringRepository;
+	private final PasswordEncoder passwordEncoder;
 	
 	public Registering create(String surname, 
 			String name,
-			String teloremail,
+			String username,
 			String password,
 			String year,
 			String month,
@@ -20,8 +22,8 @@ public class RegisteringService {
 		  Registering n = new Registering();
 		  n.setSurname(surname);
 		  n.setName(name);
-		  n.setTeloremail(teloremail);
-		  n.setPassword(password);
+		  n.setUsername(username);
+		  n.setPassword(passwordEncoder.encode(password));
 		  n.setYear(year);
 		  n.setMonth(month);
 		  n.setDay(day);

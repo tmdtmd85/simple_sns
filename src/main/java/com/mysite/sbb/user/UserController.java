@@ -46,13 +46,12 @@ public class UserController {
     public String signup(@Valid Registering registering, BindingResult bindingResult) {
         registeringService.create(registering.getSurname(), 
     			registering.getName(),
-    			registering.getTeloremail(),
+    			registering.getUsername(),
     			registering.getPassword(),
     			registering.getYear(),
     			registering.getMonth(),
     			registering.getDay(),
     			registering.getGender());
-        
         
         return "redirect:/hello";
     }

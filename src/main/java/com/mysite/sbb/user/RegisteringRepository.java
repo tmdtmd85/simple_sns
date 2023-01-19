@@ -5,5 +5,6 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RegisteringRepository extends JpaRepository<Registering, Long>{
+	Optional<Registering> findByusername(String username);
 }
 

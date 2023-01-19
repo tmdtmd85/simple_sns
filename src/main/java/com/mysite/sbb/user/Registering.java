@@ -13,7 +13,7 @@ public class Registering {
 	private Integer id;
 	private String surname;
 	private String name;
-	private String teloremail;
+	private String username;
 	private String password;
 	private String year;
 	private String month;
@@ -36,12 +36,12 @@ public class Registering {
 		this.name = name;
 	}
 	
-	public String getTeloremail() {
-		return teloremail;
+	public String getUsername() {
+		return username;
 	}
 	
-	public void setTeloremail(String teloremail) {
-		this.teloremail = teloremail;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	public String getPassword() {
