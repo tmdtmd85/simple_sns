@@ -57,8 +57,24 @@ public class UserController {
     }
     
     @GetMapping("/login")
-    public String login() {
-        return "login_form";
+    public String login(Model model, Registering registering) {
+	    List<Integer> IntegerList = new ArrayList<>();
+	    for(int i = 2023; i >= 1905; i--) {
+	    	IntegerList.add(i);
+	    }
+	    List<Integer> MonthList = new ArrayList<>();
+	    for(int i = 1; i <= 12; i++) {
+	    	MonthList.add(i);
+	    }
+	    List<Integer> DayList = new ArrayList<>();
+	    for(int i = 1; i <= 31; i++) {
+	    	DayList.add(i);
+	    }
+	    model.addAttribute("IntegerList", IntegerList);
+	    model.addAttribute("MonthList", MonthList);
+	    model.addAttribute("DayList", DayList);
+    	
+        return "login";
     }
     
 }

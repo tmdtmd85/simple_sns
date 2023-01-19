@@ -83,4 +83,5 @@ public class Registering {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 }

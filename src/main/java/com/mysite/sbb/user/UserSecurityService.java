@@ -23,7 +23,6 @@ public class UserSecurityService implements UserDetailsService{
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Registering> _registering = this.registeringRepository.findByusername(username);
         if (_registering.isEmpty()) {
-        	System.out.println("yo!");
             throw new UsernameNotFoundException("사용자를 찾을수 없습니다.");
         }
         Registering registering = _registering.get();
