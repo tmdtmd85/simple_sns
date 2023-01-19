@@ -72,6 +72,4 @@ public class RegisteringController {
   public @ResponseBody Iterable<Registering> getAllUsers() {
 	 return RegisteringRepository.findAll();
   }
-  
-  
 }

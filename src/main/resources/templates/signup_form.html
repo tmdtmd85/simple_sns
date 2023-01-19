@@ -8,24 +8,64 @@
             <h4>회원가입</h4>
         </div>
     </div>
-    <form th:action="@{/user/signup}" th:object="${userCreateForm}" method="post">
-        <div class="mb-3">
-            <label for="username" class="form-label">사용자ID</label>
-            <input type="text" th:field="*{username}" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label for="password1" class="form-label">비밀번호</label>
-            <input type="password" th:field="*{password1}" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label for="password2" class="form-label">비밀번호 확인</label>
-            <input type="password" th:field="*{password2}" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">이메일</label>
-            <input type="email" th:field="*{email}" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary">회원가입</button>
-    </form>
+    <form th:action="@{/user/signup}" th:object="${registering}" method="post">
+		<div class="mb-3">
+			<div class="row">
+				<div class="col"><input type="text" class="form-control" id="surname" placeholder="surname" name="surname" th:field="*{surname}"></div>
+				<div class="col"><input type="text" class="form-control" id="name" placeholder="name" name="name" th:field="*{name}"><br></div>
+			</div>
+			<div class="row">
+				<div class="col"><input type="text" class="form-control" id="tel_or_email" placeholder="telephone number or email" name="teloremail" th:field="*{teloremail}"><br></div>           
+			</div>
+			<div class="row">
+				<div class="col"><input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" th:field="*{password}"><br></div>
+			</div>
+			<div class="btn-group">    
+				<div class="row">
+					<div class="col">
+						<select class="form-select" aria-label="Default select example" th:field="*{year}">
+							<option value="2023" selected>Year</option>
+							<option th:each="integer : ${IntegerList}" th:value="${integer}" th:text="${integer}"></option>
+						</select>
+					</div>
+					<div class="col">
+						<select class="form-select" aria-label="Default select example" th:field="*{month}">
+							<option value="1" selected>Month</option>
+							<option th:value="${month}" th:each="month : ${MonthList}" th:text="${month}"></option>
+						</select>
+					</div>
+					<div class="col">
+						<select class="form-select" aria-label="Default select example" th:field="*{day}">
+							<option value="1" selected>Day</option>
+							<option th:value="${day}" th:each="day : ${DayList}" th:text="${day}"></option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="mb-3">
+			<div class="btn-group">
+				<div class="row">
+					<div class="col">
+						<button type="button" class="btn btn-outline-dark">
+							Male<input type="radio" name="gender" value="Male" th:field="*{gender}">
+						</button>
+					</div>
+					<div class="col">
+						<button type="button" class="btn btn-outline-dark">
+							Female <input type="radio" name="gender" value="Female" th:field="*{gender}">
+						</button>
+					</div>
+					<div class="col">
+						<button type="button" class="btn btn-outline-dark">
+							Others <input type="radio" name="gender" value="Others" th:field="*{gender}">
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+    	<button type="submit" class="btn btn-success">Submit</button>
+	</form>    
 </div>
 </html>
