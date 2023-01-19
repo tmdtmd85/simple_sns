@@ -111,7 +111,12 @@
                   <a class="navbar-brand" href="#">Logo</a>
                 </div>
             </nav>
-            <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+            <form method="post" action="/image" enctype="multipart/form-data">
+                <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+				<input type="file" name="pic"/>
+				<button>사진전송</button>
+			</form>
+		</form>
         </div>
   
         <!-- Modal footer -->
