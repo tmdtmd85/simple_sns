@@ -60,7 +60,9 @@
             <div class="mb-3">
                 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                     <div class="container-fluid">
-                      <a class="navbar-brand" href="#">Logo</a>
+                      <a class="navbar-brand" href="#">
+		              	<img src="./제갈량.jfif" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+		              </a>
                     </div>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                         Enter comment
@@ -75,15 +77,34 @@
             </ul>
         </form>
     </div>
-    <div class="shadow-sm p-4 mb-4 bg-white rounded-3" th:each="string : ${StringList}">
+    <div class="shadow-sm p-4 mb-4 bg-white rounded-3" th:each="comment : ${List}">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Logo</a>
+              <a src="./제갈량.jfif" class="navbar-brand" href="#">Logo</a>
               <p style="color:white;">Tommorrow will be a good day!!</p>
             </div>
         </nav>
         <p th:text="${string}"/>
         <img src="./고양이마리오.png"/>
+        <form action="#">
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">좋아요</li>
+                <li class="list-group-item">댓글달기</li>
+                <li class="list-group-item">공유하기</li>
+            </ul>
+        </form>
+    </div>
+    <div class="shadow-sm p-4 mb-4 bg-white rounded-3" th:each="comment : ${CommentList}">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+              	<img src="./제갈량.jfif" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+              </a>
+              <p style="color:white;">Tommorrow will be a good day!!</p>
+            </div>
+        </nav>
+        <p th:text="${comment.Comment}"/>
+        <img th:src="${comment.imagepath}"/>
         <form action="#">
             <ul class="list-group list-group-horizontal">
                 <li class="list-group-item">좋아요</li>
