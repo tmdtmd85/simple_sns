@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.File;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -43,8 +44,9 @@ public class UserController {
 	}
 	
     @PostMapping("/signup")
-    public String signup(@Valid Registering registering, BindingResult bindingResult) {
-        registeringService.create(registering.getSurname(), 
+    public String signup(@Valid Registering registering, BindingResult bindingResult) { 
+    	
+        Registering n = registeringService.create(registering.getSurname(), 
     			registering.getName(),
     			registering.getUsername(),
     			registering.getPassword(),
@@ -52,6 +54,20 @@ public class UserController {
     			registering.getMonth(),
     			registering.getDay(),
     			registering.getGender());
+        
+        String folder = "C:/Users/tmdtm/OneDrive/바탕 화면/sns/src/main/resources/static/";
+        
+		String path = folder + n.getId().toString();
+        File f1 = new File(path);    
+        boolean bool1 = f1.mkdir();
+        
+        path = folder + n.getId().toString() + "/comment";
+        File f2 = new File(path);    
+        boolean bool2 = f2.mkdir(); 
+        
+        path = folder + n.getId().toString() + "/profile";
+        File f3 = new File(path);    
+        boolean bool3 = f3.mkdir(); 
         
         return "redirect:/hello";
     }

@@ -10,6 +10,7 @@ import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -25,7 +26,10 @@ public class HelloController {
 	@Autowired
 	private final CommentRepository commentRepository;
     @GetMapping("/hello")
-    public String hello(Model model) {
+    public String hello(Model model, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
+    	Registering registering = registeringAdapter.getRegistering();
+    	
+    	model.addAttribute("registering", registering);
     	
     	List<Comment> CommentList = commentRepository.findAll();
     	

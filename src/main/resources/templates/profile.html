@@ -30,14 +30,11 @@
 	    <nav class="navbar">
 		  <div class="container-fluid">
 		    <ul class="navbar-nav">
-			    <a class="navbar-brand" href="#">
-			      <img src="./8.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+			    <a class="navbar-brand" href="/hello">
+			      <img src="./common/home.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
 			    </a>
-			    <a class="navbar-brand" href="#">
-			      <img src="./8.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
-			    </a>
-			    <a class="navbar-brand" href="#">
-			      <img src="./8.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+			    <a class="navbar-brand" href="/ex">
+			      <img src="./common/profile.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
 			    </a>
 		    </ul>
 		  </div>
@@ -46,12 +43,17 @@
     <div class="col" th:object="${registering}">
     	<div class="row shadow p-4 mb-4 bg-white"> 
     		<div class="col=sm-12 p-3 card" style="position:relative;">
-			    <img class="card-img-top" src="./8.jpg" alt="Card image" style="height:200px;z-index:1;" ><br><hr>
-			 	<a class="navbar-brand" href="#" style="width:40px; z-index:2; position:relative; left:10px; top:-125px;">
-			      <img src="./8.jpg" alt="Avatar Logo" style="width:200px;border: 3px solid gray;" class="rounded-pill"> 
-			    </a>
+			    <img class="card-img-top" th:src="${registering.background}" alt="Card image" style="height:200px;z-index:1;" ><br><hr>
+			 	
+			 	<div class="dropdown" style="width:40px; z-index:2; position:relative; left:10px; top:-125px;">
+			      	<img type="button" data-bs-toggle="dropdown" th:src="${registering.profile}" alt="Avatar Logo" style="width:200px;border: 3px solid gray;" class="rounded-pill dropdown-toggle"> 
+					<ul class="dropdown-menu">
+						<li><p class="dropdown-item" data-bs-toggle="modal" data-bs-target="#profileModal">프로필</p></li>
+					</ul>			    
+			    </div>
+			    
 			    <div style="position:relative; top: -275px; z-index:2;">
-			    	<button type="button" class="btn btn-primary" style="float:right;">사진 편집</button>
+			    	<button type="button" class="btn btn-primary" style="float:right;" data-bs-toggle="modal" data-bs-target="#backModal">사진편집</button>
 			    </div>
 			    <div style="position:relative; top:-200px;">
 			    	<span style="position:relative; left:225px;">
@@ -88,8 +90,8 @@
 			  <!-- The slideshow/carousel -->
 			  <div class="carousel-inner">
 			    <div class="carousel-item active">
-			        <div class="card" style="width:400px">
-					    <img class="card-img-top" src="./내비치는세계.jfif" alt="Card image" style="width:100%">
+			        <div class="card" style="width:400px; height:400px;">
+					    <img class="card-img-top" src="./내비치는세계.jfif" alt="Card image" style="width200px; height:200px;">
 					    <div class="card-body">
 					      <h4 class="card-title">John Doe</h4>
 					      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
@@ -98,8 +100,8 @@
 					</div>
 			    </div>
 			    <div class="carousel-item">
-			      	<div class="card" style="width:400px">
-			      		<img src="./앨런튜링.jfif" alt="Chicago" class="d-block" style="width:100%;">
+			      	<div class="card" style="width:400px; height:400px;">
+			      		<img src="./앨런튜링.jfif" alt="Chicago" class="d-block" style="width200px; height:200px;">
 					    <div class="card-body">
 					      <h4 class="card-title">John Doe</h4>
 					      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
@@ -108,8 +110,8 @@
 					</div>
 			    </div>
 			    <div class="carousel-item">
-			      	<div class="card" style="width:400px">
-			      		<img src="./제갈량.jfif" alt="New York" class="d-block" style="width:100%;">
+			      	<div class="card" style="width:400px; height:400px;">
+			      		<img src="./제갈량.jfif" alt="New York" class="d-block" style="width200px; height:200px;">
 					    <div class="card-body">
 					      <h4 class="card-title">John Doe</h4>
 					      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
@@ -138,14 +140,35 @@
 		    	<div class="row shadow p-4 mb-4 bg-white rounded-3">친구<button type="button" class="btn btn-link" style="float:right;">모든 친구 보기</button></div>
 		    </div>
 		    
-		    
-		    
 		    <div class="col-sm-5 p-3">
-			   	<div class="shadow p-4 mb-4 bg-white rounded-3" th:each="comment : ${CommentList}">
+		    	<div class="shadow-sm p-4 mb-4 bg-white rounded-3">
+			        <form action="#">
+			            <div class="mb-3">
+			                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			                    <div class="container-fluid">
+			                      <a class="navbar-brand" href="#">
+					              	<img th:src="${registering.profile}" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+					              </a>
+			                    </div>
+			                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+			                        Enter comment
+			                    </button>
+			                </nav>
+			            </div>
+			            <br><hr>
+			            <ul class="list-group list-group-horizontal">
+			                <li class="list-group-item">라이브 방송</li>
+			                <li class="list-group-item">사진/동영상</li>
+			                <li class="list-group-item">기분/활동</li>
+			            </ul>
+			        </form>
+			    </div>
+		    
+			   	<div class="shadow p-4 mb-4 bg-white rounded-3" th:object="${registering}" th:each="comment : ${CommentList}">
 			        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 			            <div class="container-fluid">
 			              <a class="navbar-brand" href="#">
-			              	<img src="./제갈량.jfif" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+			              	<img th:src="${registering.profile}" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
 			              </a>
 			              <p style="color:white;">Tommorrow will be a good day!!</p>
 			            </div>
@@ -167,5 +190,98 @@
     
 </div>
 <!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">게시물 만들기</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Logo</a>
+                </div>
+            </nav>
+            <form method="post" action="/image" enctype="multipart/form-data">
+                <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+				<input type="file" name="pic"/>
+				<button>사진전송</button>
+			</form>
+		</form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+ <!-- The Modal -->
+<div class="modal" id="backModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">배경사진 업로드</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form method="post" action="/background" enctype="multipart/form-data">
+				<input type="file" name="pic"/>
+				<button>사진전송</button>
+			</form>
+		</form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+  
+  
+   <!-- The Modal -->
+<div class="modal" id="profileModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">프로필 업로드</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form method="post" action="/updateprofile" enctype="multipart/form-data">
+				<input type="file" name="pic"/>
+				<button>사진전송</button>
+			</form>
+		</form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
 </body>
 </html>

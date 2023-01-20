@@ -1,6 +1,9 @@
 package com.mysite.sbb.user;
 
 import org.springframework.stereotype.Service;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import lombok.RequiredArgsConstructor;
@@ -30,5 +33,13 @@ public class RegisteringService {
 		  n.setGender(gender);
 		  this.registeringRepository.save(n);
 		  return n;
+	}
+	
+	public void changeBackground(Integer id, String backgroundpath) {
+		this.registeringRepository.changeBackground(id, backgroundpath);
+	}
+	
+	public void changeProfile(Integer id, String profilepath) {
+		this.registeringRepository.changeBackground(id, profilepath);
 	}
 }
