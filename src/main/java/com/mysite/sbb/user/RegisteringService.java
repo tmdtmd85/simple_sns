@@ -40,6 +40,6 @@ public class RegisteringService {
 	}
 	
 	public void changeProfile(Integer id, String profilepath) {
-		this.registeringRepository.changeBackground(id, profilepath);
+		this.registeringRepository.changeProfile(id, profilepath);
 	}
 }

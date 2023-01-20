@@ -38,6 +38,18 @@ public class HelloController {
         return "main";
     }
     
+    @GetMapping("/go")
+    public String yo(Model model, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
+    	Registering registering = registeringAdapter.getRegistering();
+    	
+    	model.addAttribute("registering", registering);
+    	
+    	List<Comment> CommentList = commentRepository.findAll();
+    	
+    	model.addAttribute("CommentList", CommentList);
+    	
+        return "main2";
+    }
     
     @GetMapping(path="/hello/all")
     public @ResponseBody Integer getAllUsers() {
@@ -58,5 +70,10 @@ public class HelloController {
     	model.addAttribute("CommentList", CommentList);
     	model.addAttribute("registering", registering);
     	return "profile";
+    }
+    
+	@GetMapping("/tom")
+    public String tom() {
+        return "template";
     }
 }

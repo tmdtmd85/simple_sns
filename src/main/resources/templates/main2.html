@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="javascript:void(0)">SNS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+        <p class="navbar-nav me-auto"/>
+        <form class="d-flex float-end">
+            <input class="form-control me-2" type="text" placeholder="Search">
+            <button class="btn btn-primary" type="button">Search</button>
+        </form>
+    </div>
+  </div>
+</nav>
+<div class="row">
+    <div class="col-sm-1 p-3 bg-primary text-white">
+	    <nav class="navbar">
+		  <div class="container-fluid">
+		    <ul class="navbar-nav">
+			    <a class="navbar-brand" href="/hello">
+			      <img src="./common/home.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+			    </a>
+			    <a class="navbar-brand" href="/ex">
+			      <img src="./common/profile.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+			    </a><br><hr>
+		    </ul>
+		  </div>
+		</nav>
+    </div>
+	<div class="col-sm-10 container mt-3" th:object="${registering.profile}">
+	    <div class="shadow-sm p-4 mb-4 bg-white rounded-3">
+	        <div class="container mt-3">
+	            <!-- Nav pills -->
+	            <ul class="nav nav-pills" role="tablist">
+	              <li class="nav-item">
+	                <a class="nav-link active" data-bs-toggle="pill" href="#home">스토리</a>
+	              </li>
+	              <li class="nav-item">
+	                <a class="nav-link" data-bs-toggle="pill" href="#menu1">릴스</a>
+	              </li>
+	            </ul>
+	          
+	            <!-- Tab panes -->
+	            <div class="tab-content">
+	              <div id="home" class="container tab-pane active"><br>
+	                <div class="card" style="width:400px">
+	                    <img class="card-img-top" th:src="${registering.profile}" alt="Card image" style="width:100%">
+	                    <div class="card-body">
+	                    <a href="#" class="btn btn-primary">스토리 만들기</a>
+	                    </div>
+	                </div>
+	            </div>
+	            <div id="menu1" class="container tab-pane fade"><br>
+	                <h3>Menu 1</h3>
+	                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	              </div>
+	            </div>
+	        </div>  
+	    </div>
+	    <div class="shadow-sm p-4 mb-4 bg-white rounded-3">
+	        <form action="#">
+	            <div class="mb-3">
+	                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	                    <div class="container-fluid">
+	                      <a class="navbar-brand" href="#">
+			              	<img th:src="${registering.profile}" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+			              </a>
+	                    </div>
+	                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+	                        Enter comment
+	                    </button>
+	                </nav>
+	            </div>
+	            <br><hr>
+	            <ul class="list-group list-group-horizontal">
+	                <li class="list-group-item">라이브 방송</li>
+	                <li class="list-group-item">사진/동영상</li>
+	                <li class="list-group-item">기분/활동</li>
+	            </ul>
+	        </form>
+	    </div>
+	    <div class="shadow-sm p-4 mb-4 bg-white rounded-3" th:object="${registering}" th:each="comment : ${List}">
+	        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	            <div class="container-fluid">
+	              <a src="./제갈량.jfif" class="navbar-brand" href="#">Logo</a>
+	              <p style="color:white;">Tommorrow will be a good day!!</p>
+	            </div>
+	        </nav>
+	        <p th:text="${string}"/>
+	        <img th:src="${registering.profile}"/>
+	        <form action="#">
+	            <ul class="list-group list-group-horizontal">
+	                <li class="list-group-item">좋아요</li>
+	                <li class="list-group-item">댓글달기</li>
+	                <li class="list-group-item">공유하기</li>
+	            </ul>
+	        </form>
+	    </div>
+	    <div class="shadow-sm p-4 mb-4 bg-white rounded-3" th:each="comment : ${CommentList}">
+	        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	            <div class="container-fluid">
+	              <a class="navbar-brand" href="#">
+	              	<img th:src="${registering.profile}" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+	              </a>
+	              <p style="color:white;">Tommorrow will be a good day!!</p>
+	            </div>
+	        </nav>
+	        <p th:text="${comment.Comment}"/>
+	        <img th:src="${comment.imagepath}"/>
+	        <form action="#">
+	            <ul class="list-group list-group-horizontal">
+	                <li class="list-group-item">좋아요</li>
+	                <li class="list-group-item">댓글달기</li>
+	                <li class="list-group-item">공유하기</li>
+	            </ul>
+	        </form>
+	    </div>
+	</div>
+</div>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">게시물 만들기</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Logo</a>
+                </div>
+            </nav>
+            <form method="post" action="/image" enctype="multipart/form-data">
+                <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+				<input type="file" name="pic"/>
+				<button>사진전송</button>
+			</form>
+		</form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

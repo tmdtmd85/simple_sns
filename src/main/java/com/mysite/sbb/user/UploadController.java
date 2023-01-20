@@ -80,8 +80,9 @@ public class UploadController {
 		Registering registering = registeringAdapter.getRegistering();
 		
 		registering.setProfile("./" + registering.getId().toString() + "/profile/profile.jpg");		
+	
 		
-		registeringService.changeBackground(registering.getId(), registering.getProfile());
+		registeringService.changeProfile(registering.getId(), registering.getProfile());
         
 		String path = "C:/Users/tmdtm/OneDrive/바탕 화면/sns/src/main/resources/static/"+registering.getId().toString()+"/profile/profile.jpg";
 		
