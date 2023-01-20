@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+	<th:block th:replace="part/head :: headFragment"></th:block>
+	<body>
+		<th:block th:replace="part/nav :: navFragment"></th:block>
+		<div class="row">
+			<div class="col-sm-1 p-3 bg-primary text-white">
+		    	<th:block th:replace="part/side :: sideFragment"></th:block>
+		    </div>
+			<div class="col-sm-10 container mt-3" th:object="${registeringList}">
+				<th:block th:replace="part/registerings :: registerings(${registeringList})"></th:block>    
+			</div>
+		</div>
+	</body>
+</html>

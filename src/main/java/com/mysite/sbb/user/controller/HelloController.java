@@ -27,8 +27,10 @@ import com.mysite.sbb.user.database.registering.*;
 public class HelloController {
 	@Autowired
 	private final CommentRepository commentRepository;
+	private final RegisteringRepository registeringRepository;
+	
     @GetMapping("/main")
-    public String hello(Model model, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
+    public String main(Model model, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
     	Registering registering = registeringAdapter.getRegistering();
     	
     	model.addAttribute("registering", registering);
@@ -41,11 +43,18 @@ public class HelloController {
     }
     
     @GetMapping(path="/profile")
-    public String cat(Model model, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
+    public String profile(Model model, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
     	Registering registering = registeringAdapter.getRegistering();
     	List<Comment> CommentList = commentRepository.findAll();
     	model.addAttribute("CommentList", CommentList);
     	model.addAttribute("registering", registering);
     	return "profile";
+    }
+    
+    @GetMapping(path="/search")
+    public String search(Model model) {
+    	List<Registering> registerings = registeringRepository.findAll();
+    	model.addAttribute("registeringList", registerings);
+    	return "search";
     }
 }
