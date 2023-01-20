@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 
+import com.mysite.sbb.user.database.registering.*;
+
 @RequiredArgsConstructor
 @Service
 public class UserSecurityService implements UserDetailsService{

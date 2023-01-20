@@ -1,4 +1,4 @@
-package com.mysite.sbb.user;
+package com.mysite.sbb.user.controller;
 
 import jakarta.validation.Valid;
 
@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 
+import com.mysite.sbb.user.database.registering.*;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/user")
 public class UserController {
-	private final UserService userService;
 	private final RegisteringService registeringService;
 	
 	@GetMapping("/signup")

@@ -1,4 +1,4 @@
-package com.mysite.sbb.user;
+package com.mysite.sbb.user.database.comment;
 
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -1,4 +1,4 @@
-package com.mysite.sbb.user;
+package com.mysite.sbb.user.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,8 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mysite.sbb.user.database.comment.*;
+import com.mysite.sbb.user.database.registering.*;
 
 
 @RequiredArgsConstructor
@@ -25,7 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HelloController {
 	@Autowired
 	private final CommentRepository commentRepository;
-    @GetMapping("/hello")
+    @GetMapping("/main")
     public String hello(Model model, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
     	Registering registering = registeringAdapter.getRegistering();
     	
@@ -38,42 +40,12 @@ public class HelloController {
         return "main";
     }
     
-    @GetMapping("/go")
-    public String yo(Model model, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
-    	Registering registering = registeringAdapter.getRegistering();
-    	
-    	model.addAttribute("registering", registering);
-    	
-    	List<Comment> CommentList = commentRepository.findAll();
-    	
-    	model.addAttribute("CommentList", CommentList);
-    	
-        return "main2";
-    }
-    
-    @GetMapping(path="/hello/all")
-    public @ResponseBody Integer getAllUsers() {
-    	return commentRepository.findAll().get(0).getId();
-    }
-    
-    @GetMapping(path="/yo")
-    public String authenticationKeyCheck(Model model, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
-    	Registering registering = registeringAdapter.getRegistering();
-    	model.addAttribute("registering", registering);
-    	return "fortfolio";
-    }
-    
-    @GetMapping(path="/ex")
+    @GetMapping(path="/profile")
     public String cat(Model model, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
     	Registering registering = registeringAdapter.getRegistering();
     	List<Comment> CommentList = commentRepository.findAll();
     	model.addAttribute("CommentList", CommentList);
     	model.addAttribute("registering", registering);
     	return "profile";
-    }
-    
-	@GetMapping("/tom")
-    public String tom() {
-        return "template";
     }
 }

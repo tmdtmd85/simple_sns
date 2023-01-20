@@ -1,4 +1,4 @@
-package com.mysite.sbb.user;
+package com.mysite.sbb.user.controller;
 
 import java.nio.file.*;
 
@@ -14,7 +14,11 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mysite.sbb.user.*;
 
+import com.mysite.sbb.user.database.comment.*;
+
+import com.mysite.sbb.user.database.registering.*;
 
 @RequiredArgsConstructor
 @Controller

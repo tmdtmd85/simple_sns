@@ -1,4 +1,4 @@
-package com.mysite.sbb.user;
+package com.mysite.sbb.user.database.comment;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package com.mysite.sbb.user;
+package com.mysite.sbb.user.database.registering;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package com.mysite.sbb.user;
+package com.mysite.sbb.user.database.registering;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

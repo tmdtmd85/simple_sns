@@ -24,7 +24,7 @@ public class SecurityConfig {
         		.and()
         			.formLogin()
         			.loginPage("/user/login")
-        			.defaultSuccessUrl("/hello")
+        			.defaultSuccessUrl("/main")
                 ;
         http.csrf().disable();
         return http.build();

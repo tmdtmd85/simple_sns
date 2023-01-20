@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="profileModal">
+	<!-- The Modal -->
+	<div class="modal" id="profileModal">
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	  
+	        <!-- Modal Header -->
+	        <div class="modal-header">
+	          <h4 class="modal-title">프로필 업로드</h4>
+	          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+	        </div>
+	  
+	        <!-- Modal body -->
+	        <div class="modal-body">
+	            <form method="post" action="/updateprofile" enctype="multipart/form-data">
+					<input type="file" name="pic"/>
+					<button>사진전송</button>
+				</form>
+			</form>
+	        </div>
+	  
+	        <!-- Modal footer -->
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+	        </div>
+	  
+	      </div>
+	    </div>
+	  </div>
+</div>

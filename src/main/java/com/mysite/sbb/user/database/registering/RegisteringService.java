@@ -1,4 +1,4 @@
-package com.mysite.sbb.user;
+package com.mysite.sbb.user.database.registering;
 
 import org.springframework.stereotype.Service;
 import org.springframework.data.jpa.repository.Modifying;
