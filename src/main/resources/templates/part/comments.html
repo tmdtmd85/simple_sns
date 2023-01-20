@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="comments(registering, commentList)">
+	<div class="shadow-sm p-4 mb-4 bg-white rounded-3" th:each="comment : ${CommentList}">
+	    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	        <div class="container-fluid">
+	        <a class="navbar-brand" href="#">
+	        <img th:src="${registering.profile}" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+	        </a>
+	        <p style="color:white;">Tommorrow will be a good day!!</p>
+	        </div>
+	    </nav>
+	    <p th:text="${comment.Comment}"/>
+	    <img th:src="${comment.imagepath}"/>
+	    <form action="#">
+	        <ul class="list-group list-group-horizontal">
+	            <li class="list-group-item">좋아요</li>
+	            <li class="list-group-item">댓글달기</li>
+	            <li class="list-group-item">공유하기</li>
+	        </ul>
+	    </form>
+	</div>
+</div>

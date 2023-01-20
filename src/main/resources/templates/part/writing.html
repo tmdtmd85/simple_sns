@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="writing(registering)">
+	<div class="shadow-sm p-4 mb-4 bg-white rounded-3">
+	    <form action="#">
+	        <div class="mb-3">
+	            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	                <div class="container-fluid">
+	                  <a class="navbar-brand" href="#">
+			          	<img th:src="${registering.profile}" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+			          </a>
+	                </div>
+	                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+	                    Enter comment
+	                </button>
+	            </nav>
+	        </div>
+	        <br><hr>
+	        <ul class="list-group list-group-horizontal">
+	            <li class="list-group-item">라이브 방송</li>
+	            <li class="list-group-item">사진/동영상</li>
+	            <li class="list-group-item">기분/활동</li>
+	        </ul>
+	    </form>
+	</div>
+	<th:block th:replace="/part/myModal :: myModal"></th:block>
+</div>
