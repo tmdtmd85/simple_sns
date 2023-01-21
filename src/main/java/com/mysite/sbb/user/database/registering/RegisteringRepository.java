@@ -1,5 +1,6 @@
 package com.mysite.sbb.user.database.registering;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,4 +21,6 @@ public interface RegisteringRepository extends JpaRepository<Registering, Long>{
 	@Modifying // select 문이 아님을 나타낸다
 	@Query(value = "UPDATE Registering r set r.profile = :profile where r.id = :id", nativeQuery = true)
 	void changeProfile(@Param("id")Integer id, @Param("profile")String profilepath);
+	
+    Optional<Registering> findById(Long id);
 }

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<th:block th:replace="part/head :: headFragment"></th:block>
+	<body>
+		<th:block th:replace="part/nav :: navFragment"></th:block>
+		<div class="row" th:object="${registering}">
+			<div class="col-sm-1 p-3 bg-primary text-white">
+		    	<th:block th:replace="part/side :: sideFragment(${registering})"></th:block>
+		    </div>
+			<div class="col-sm-10 container mt-3">
+				<th:bloc layout:fragment="content"></th:bloc>    
+			</div>
+		</div>
+	</body>
+</html>

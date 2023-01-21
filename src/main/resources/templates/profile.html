@@ -1,21 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-	<th:block th:replace="part/head :: headFragment"></th:block>
-<body>
-
-<th:block th:replace="part/nav :: navFragment"></th:block>
-
-<div class="row" th:object="${registering}">
-    <div class="col-sm-1 p-3 bg-primary text-white">
-    	<th:block th:replace="part/side :: sideFragment(${registering})"></th:block>
-    </div>
-    <div class="col">
-    	<div class="row shadow p-4 mb-4 bg-white"> 
+<html lang="en" layout:decorate="~{layouts/layout}">
+<th:block layout:fragment="content">
+	    	<div class="row shadow p-4 mb-4 bg-white"> 
     		<div class="col=sm-12 p-3 card" style="position:relative;">
-			    <img class="card-img-top" th:src="${registering.background}" alt="Card image" style="height:200px;z-index:1;" ><br><hr>
+			    <img class="card-img-top" th:src="${profile.background}" alt="Card image" style="height:200px;z-index:1;" ><br><hr>
 			 	
 			 	<div class="dropdown" style="width:40px; z-index:2; position:relative; left:10px; top:-125px;">
-			      	<img type="button" data-bs-toggle="dropdown" th:src="${registering.profile}" alt="Avatar Logo" style="width:200px;border: 3px solid gray;" class="rounded-pill dropdown-toggle"> 
+			      	<img type="button" data-bs-toggle="dropdown" th:src="${profile.profile}" alt="Avatar Logo" style="width:200px;border: 3px solid gray;" class="rounded-pill dropdown-toggle"> 
 					<ul class="dropdown-menu">
 						<li><p class="dropdown-item" data-bs-toggle="modal" data-bs-target="#profileModal">프로필</p></li>
 					</ul>			    
@@ -26,8 +17,8 @@
 			    </div>
 			    <div style="position:relative; top:-200px;">
 			    	<span style="position:relative; left:225px;">
-			    		<b th:text="${registering.surname}"/>
-			    		<b th:text="${registering.name}"/>
+			    		<b th:text="${profile.surname}"/>
+			    		<b th:text="${profile.name}"/>
 			    	</span>
 			    	<div class="btn-group" style="float:right;">
 					    <button type="button" class="btn btn-primary">스토리지에 추가</button>
@@ -110,18 +101,16 @@
 		    </div>
 		    
 		    <div class="col-sm-5 p-3">
-	    		<th:block th:replace="part/writing :: writing(${registering})"></th:block>
+	    		<th:block th:replace="part/writing :: writing(${profile})"></th:block>
 		    
-		    	<th:block th:replace="part/comments :: comments(${registering}, ${CommentList})"></th:block>
+		    	<th:block th:replace="part/comments :: comments(${profile}, ${CommentList})"></th:block>
 			   	
 			</div>
 	    </div>
-    </div>
-</div>
- 
-<th:block th:replace="part/backModal :: backModal"></th:block>
-			   	
-<th:block th:replace="part/profileModal :: profileModal"></th:block>
-
-</body>
+	    <th:block th:replace="part/backModal :: backModal"></th:block>	   	
+	<th:block th:replace="part/profileModal :: profileModal"></th:block>
+</th:block>
 </html>
+
+
+

@@ -4,9 +4,9 @@
 	<div class="shadow-sm p-4 mb-4 bg-white rounded-3" th:each="registering : ${registeringList}">
 	    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	        <div class="container-fluid">
-	        <a class="navbar-brand" href="#">
-	        <img th:src="${registering.profile}" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
-	        </a>
+		        <a class="navbar-brand" th:href="'/ex?id='+${registering.id}">
+		        	<img th:src="${registering.profile}" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+		        </a>
 	        	<span style="color:white;">
 		        	<b th:text="${registering.surname}"/>
 				    <b th:text="${registering.name}"/>
