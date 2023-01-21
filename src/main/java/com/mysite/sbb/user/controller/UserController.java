@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 
 import com.mysite.sbb.user.database.registering.*;
+import com.mysite.sbb.user.database.comment.*;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/user")
 public class UserController {
 	private final RegisteringService registeringService;
+	private final CommentService commentService;
 	
 	@GetMapping("/signup")
 	public String signup(Model model, Registering registering) {
@@ -54,7 +56,8 @@ public class UserController {
     			registering.getYear(),
     			registering.getMonth(),
     			registering.getDay(),
-    			registering.getGender());
+    			registering.getGender()
+    		);
         
         String folder = "C:/Users/tmdtm/OneDrive/바탕 화면/sns/src/main/resources/static/";
         
@@ -70,7 +73,14 @@ public class UserController {
         File f3 = new File(path);    
         boolean bool3 = f3.mkdir(); 
         
-        return "redirect:/hello";
+        
+        Comment c = commentService.create(
+        		n.getId(),
+        		n.getYear()+"년 "+n.getMonth()+"월 "+n.getDay()+"일 출생", 
+        		"./common/born.png"
+        	);
+        
+        return "redirect:/main";
     }
     
     @GetMapping("/login")

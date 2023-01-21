@@ -22,5 +22,5 @@ public interface RegisteringRepository extends JpaRepository<Registering, Long>{
 	@Query(value = "UPDATE Registering r set r.profile = :profile where r.id = :id", nativeQuery = true)
 	void changeProfile(@Param("id")Integer id, @Param("profile")String profilepath);
 	
-    Optional<Registering> findById(Long id);
+    Optional<Registering> findById(Integer id);
 }

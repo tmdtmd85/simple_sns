@@ -13,6 +13,7 @@
 						</ul>			    
 				    </div>
 				</div>
+				
 				<div th:unless="${authenticated}">
 				 	<div style="width:40px; z-index:2; position:relative; left:10px; top:-125px;">
 				      	<img th:src="${profile.profile}" alt="Avatar Logo" style="width:200px;border: 3px solid gray;" class="rounded-pill"> 		    
@@ -37,6 +38,7 @@
 				    </div>
 				    <div th:unless="${authenticated}">
 				    	<div class="btn-group" style="float:right;">
+							<button type="button" class="btn btn-primary">친구 추가</button>
 						    <button type="button" class="btn btn-primary">메시지 보내기</button>
 						    <button type="button" class="btn btn-primary">좋아요</button>
 				    	</div>
@@ -68,7 +70,7 @@
 			  <div class="carousel-inner">
 			    <div class="carousel-item active">
 			        <div class="card" style="width:400px; height:400px;">
-					    <img class="card-img-top" src="./내비치는세계.jfif" alt="Card image" style="width200px; height:200px;">
+					    <img class="card-img-top" src="./common/profile.jpg" alt="Card image" style="width200px; height:200px;">
 					    <div class="card-body">
 					      <h4 class="card-title">John Doe</h4>
 					      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
@@ -78,7 +80,7 @@
 			    </div>
 			    <div class="carousel-item">
 			      	<div class="card" style="width:400px; height:400px;">
-			      		<img src="./앨런튜링.jfif" alt="Chicago" class="d-block" style="width200px; height:200px;">
+			      		<img src="./common/profile.jpg" alt="Chicago" class="d-block" style="width200px; height:200px;">
 					    <div class="card-body">
 					      <h4 class="card-title">John Doe</h4>
 					      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
@@ -88,7 +90,7 @@
 			    </div>
 			    <div class="carousel-item">
 			      	<div class="card" style="width:400px; height:400px;">
-			      		<img src="./제갈량.jfif" alt="New York" class="d-block" style="width200px; height:200px;">
+			      		<img src="./common/profile.jpg" alt="New York" class="d-block" style="width200px; height:200px;">
 					    <div class="card-body">
 					      <h4 class="card-title">John Doe</h4>
 					      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>

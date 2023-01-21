@@ -32,7 +32,7 @@ public class UploadController {
 		
 		Registering registering = registeringAdapter.getRegistering();
 		
-        commentService.create(Integer.valueOf(1),
+        commentService.create(registering.getId(),
 	    			text,
 	    			"./" + registering.getId().toString() + "/comment/" + imageFileName
     			);	

@@ -38,7 +38,7 @@ public class HelloController {
     	
     	model.addAttribute("registering", registering);
     	
-    	List<Comment> CommentList = commentRepository.findAll();
+    	List<Comment> CommentList = commentRepository.findByUserid(registering.getId());
     	
     	model.addAttribute("CommentList", CommentList);
     	
@@ -57,12 +57,17 @@ public class HelloController {
 
     
     @GetMapping(path="/ex")
-    public String profilebyid(Model model, @RequestParam(value = "id")Long id, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
+    public String profilebyid(Model model, @RequestParam(value = "id")Integer id, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
     	Optional<Registering> optional_profile = registeringRepository.findById(id);
+    	
     	Registering profile = optional_profile.get();
     	model.addAttribute("profile", profile);
+    	
     	Registering registering = registeringAdapter.getRegistering();
     	model.addAttribute("registering", registering);
+    	
+    	List<Comment> CommentList = commentRepository.findByUserid(id);
+    	model.addAttribute("CommentList", CommentList);
     	
     	model.addAttribute("authenticated", profile.getId().equals(registering.getId()));
     	return "profile";
