@@ -23,7 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mysite.sbb.user.database.comment.*;
 import com.mysite.sbb.user.database.registering.*;
-
+import com.mysite.sbb.user.database.friend.*;
+import com.user.sbb.user.message.*;
 
 @RequiredArgsConstructor
 @Controller
@@ -31,6 +32,7 @@ public class HelloController {
 	@Autowired
 	private final CommentRepository commentRepository;
 	private final RegisteringRepository registeringRepository;
+	private final FriendRepository friendRepository;
 	
     @GetMapping("/main")
     public String main(Model model, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
@@ -42,19 +44,10 @@ public class HelloController {
     	
     	model.addAttribute("CommentList", CommentList);
     	
+    	messagelist(model, registering);
+    	
         return "main";
     }
-    
-    @GetMapping(path="/profile")
-    public String profile(Model model, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
-    	Registering registering = registeringAdapter.getRegistering();
-    	List<Comment> CommentList = commentRepository.findAll();
-    	model.addAttribute("CommentList", CommentList);
-    	model.addAttribute("registering", registering);
-    	model.addAttribute("profile", registering);
-    	return "profile";
-    }
-
     
     @GetMapping(path="/ex")
     public String profilebyid(Model model, @RequestParam(value = "id")Integer id, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
@@ -70,6 +63,9 @@ public class HelloController {
     	model.addAttribute("CommentList", CommentList);
     	
     	model.addAttribute("authenticated", profile.getId().equals(registering.getId()));
+    	
+    	messagelist(model, registering);
+    	
     	return "profile";
     }
     
@@ -81,13 +77,26 @@ public class HelloController {
     	
     	Registering registering = registeringAdapter.getRegistering();
     	model.addAttribute("registering", registering);
+    	
+    	messagelist(model, registering);
+    	
     	return "search";
     }
     
-    @GetMapping(path="/tom")
-    public String tom(Model model, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
-    	Registering registering = registeringAdapter.getRegistering();
-    	model.addAttribute("registering", registering);
-    	return "home";
+    private void messagelist(Model model, Registering registering) {
+    	List<Message> messageList = new ArrayList<Message>();
+		
+    	Registering sendregistering;
+    	
+    	Message message = new Message();
+    	
+    	for(Friend friend : friendRepository.findByDestidAndApproval(registering.getId(), false)) {
+    		sendregistering = registeringRepository.findById(friend.getSendid()).get();
+    		message = new Message();
+    		message.setRegistering(sendregistering);
+    		messageList.add(message);
+    	}
+    	
+    	model.addAttribute("MessageList", messageList);
     }
 }

@@ -8,7 +8,23 @@
 				</a>
 				<a class="navbar-brand" th:href="'/ex?id='+${registering.id}">
 					<img th:src="${registering.profile}" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
-				</a><br><hr>
+				</a>
+ 	 			<div class="dropdown dropend" style="z-index:3;">
+					<img src="./common/message.png" alt="Avatar Logo" type="butthon" style="width:40px;" class="rounded-pill dropdown-toggle" data-bs-toggle="dropdown"> 
+					<ul class="dropdown-menu">
+				      <div th:each="message : ${MessageList}">
+				      	<li>
+				      		<img th:src="${message.registering.profile}" alt="Avatar Logo" style="width:40px;" class="rounded-pill" />
+				      		<p th:text="
+				      			 ${message.registering.surname}
+				      			+${message.registering.name}
+				      			+'님으로부터 친구 요청이 왔습니다'
+				      		"/>
+				      		<button type="button" class="btn btn-primary">친구 수락</button>
+				      	</li><br><hr>
+				      </div>
+				    </ul>
+				</div><br><hr>
 			</ul>
 		</div>
 	</nav>
