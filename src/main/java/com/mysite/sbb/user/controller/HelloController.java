@@ -58,11 +58,13 @@ public class HelloController {
     
     @GetMapping(path="/ex")
     public String profilebyid(Model model, @RequestParam(value = "id")Long id, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
-    	Optional<Registering> optional_registering = registeringRepository.findById(id);
-    	Registering registering = optional_registering.get();
-    	model.addAttribute("profile", registering);
-    	registering = registeringAdapter.getRegistering();
+    	Optional<Registering> optional_profile = registeringRepository.findById(id);
+    	Registering profile = optional_profile.get();
+    	model.addAttribute("profile", profile);
+    	Registering registering = registeringAdapter.getRegistering();
     	model.addAttribute("registering", registering);
+    	
+    	model.addAttribute("authenticated", profile.getId().equals(registering.getId()));
     	return "profile";
     }
     

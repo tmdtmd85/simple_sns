@@ -6,7 +6,7 @@
 				<a class="navbar-brand" href="/main">
 					<img src="./common/home.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
 				</a>
-				<a class="navbar-brand" href="/profile">
+				<a class="navbar-brand" th:href="'/ex?id='+${registering.id}">
 					<img th:src="${registering.profile}" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
 				</a><br><hr>
 			</ul>

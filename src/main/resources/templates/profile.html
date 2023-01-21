@@ -5,25 +5,42 @@
     		<div class="col=sm-12 p-3 card" style="position:relative;">
 			    <img class="card-img-top" th:src="${profile.background}" alt="Card image" style="height:200px;z-index:1;" ><br><hr>
 			 	
-			 	<div class="dropdown" style="width:40px; z-index:2; position:relative; left:10px; top:-125px;">
-			      	<img type="button" data-bs-toggle="dropdown" th:src="${profile.profile}" alt="Avatar Logo" style="width:200px;border: 3px solid gray;" class="rounded-pill dropdown-toggle"> 
-					<ul class="dropdown-menu">
-						<li><p class="dropdown-item" data-bs-toggle="modal" data-bs-target="#profileModal">프로필</p></li>
-					</ul>			    
-			    </div>
+			 	<div th:if="${authenticated}">
+				 	<div class="dropdown" style="width:40px; z-index:2; position:relative; left:10px; top:-125px;">
+				      	<img type="button" data-bs-toggle="dropdown" th:src="${profile.profile}" alt="Avatar Logo" style="width:200px;border: 3px solid gray;" class="rounded-pill dropdown-toggle"> 
+						<ul class="dropdown-menu">
+							<li><p class="dropdown-item" data-bs-toggle="modal" data-bs-target="#profileModal">프로필</p></li>
+						</ul>			    
+				    </div>
+				</div>
+				<div th:unless="${authenticated}">
+				 	<div style="width:40px; z-index:2; position:relative; left:10px; top:-125px;">
+				      	<img th:src="${profile.profile}" alt="Avatar Logo" style="width:200px;border: 3px solid gray;" class="rounded-pill"> 		    
+				    </div>
+				</div>
 			    
 			    <div style="position:relative; top: -275px; z-index:2;">
-			    	<button type="button" class="btn btn-primary" style="float:right;" data-bs-toggle="modal" data-bs-target="#backModal">사진편집</button>
+			    	<div th:if="${authenticated}">
+			    		<button type="button" class="btn btn-primary" style="float:right;" data-bs-toggle="modal" data-bs-target="#backModal">사진편집</button>
+			    	</div>
 			    </div>
 			    <div style="position:relative; top:-200px;">
 			    	<span style="position:relative; left:225px;">
 			    		<b th:text="${profile.surname}"/>
 			    		<b th:text="${profile.name}"/>
 			    	</span>
-			    	<div class="btn-group" style="float:right;">
-					    <button type="button" class="btn btn-primary">스토리지에 추가</button>
-					    <button type="button" class="btn btn-primary">프로필 편집</button>
-			    	</div>
+			    	<div th:if="${authenticated}">
+				    	<div class="btn-group" style="float:right;">
+						    <button type="button" class="btn btn-primary">스토리지에 추가</button>
+						    <button type="button" class="btn btn-primary">프로필 편집</button>
+				    	</div>
+				    </div>
+				    <div th:unless="${authenticated}">
+				    	<div class="btn-group" style="float:right;">
+						    <button type="button" class="btn btn-primary">메시지 보내기</button>
+						    <button type="button" class="btn btn-primary">좋아요</button>
+				    	</div>
+				    </div>
 			    </div>
 			    <div class="card-body" />
 			      <h4 class="card-title" />
@@ -101,14 +118,16 @@
 		    </div>
 		    
 		    <div class="col-sm-5 p-3">
-	    		<th:block th:replace="part/writing :: writing(${profile})"></th:block>
-		    
+		    	<div th:if="${authenticated}">
+		    		<th:block th:replace="part/writing :: writing(${profile})"></th:block>
+		    	</div>
 		    	<th:block th:replace="part/comments :: comments(${profile}, ${CommentList})"></th:block>
-			   	
 			</div>
 	    </div>
-	    <th:block th:replace="part/backModal :: backModal"></th:block>	   	
-	<th:block th:replace="part/profileModal :: profileModal"></th:block>
+	<div th:if="${authenticated}">  
+		<th:block th:replace="part/backModal :: backModal"></th:block> 	
+		<th:block th:replace="part/profileModal :: profileModal"></th:block>
+	</div>
 </th:block>
 </html>
 
