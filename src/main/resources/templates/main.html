@@ -3,11 +3,11 @@
 	<th:block th:replace="part/head :: headFragment"></th:block>
 	<body>
 		<th:block th:replace="part/nav :: navFragment"></th:block>
-		<div class="row">
+		<div class="row" th:object="${registering}">
 			<div class="col-sm-1 p-3 bg-primary text-white">
-		    	<th:block th:replace="part/side :: sideFragment"></th:block>
+		    	<th:block th:replace="part/side :: sideFragment(${registering})"></th:block>
 		    </div>
-			<div class="col-sm-10 container mt-3" th:object="${registering}">
+			<div class="col-sm-10 container mt-3">
 				<th:block th:replace="part/card :: card(${registering})"></th:block>
 			    <th:block th:replace="part/writing :: writing(${registering})"></th:block>
 			    <th:block th:replace="part/comments :: comments(${registering}, ${CommentList})"></th:block>    

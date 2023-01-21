@@ -5,11 +5,11 @@
 
 <th:block th:replace="part/nav :: navFragment"></th:block>
 
-<div class="row">
+<div class="row" th:object="${registering}">
     <div class="col-sm-1 p-3 bg-primary text-white">
-    	<th:block th:replace="part/side :: sideFragment"></th:block>
+    	<th:block th:replace="part/side :: sideFragment(${registering})"></th:block>
     </div>
-    <div class="col" th:object="${registering}">
+    <div class="col">
     	<div class="row shadow p-4 mb-4 bg-white"> 
     		<div class="col=sm-12 p-3 card" style="position:relative;">
 			    <img class="card-img-top" th:src="${registering.background}" alt="Card image" style="height:200px;z-index:1;" ><br><hr>

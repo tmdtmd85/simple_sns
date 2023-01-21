@@ -1,5 +1,5 @@
 <html lagn="ko" xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="sideFragment">
+<div th:fragment="sideFragment(registering)">
 	<nav class="navbar">
 		<div class="container-fluid">
 			<ul class="navbar-nav">
@@ -7,7 +7,7 @@
 					<img src="./common/home.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
 				</a>
 				<a class="navbar-brand" href="/profile">
-					<img src="./common/profile.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+					<img th:src="${registering.profile}" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
 				</a><br><hr>
 			</ul>
 		</div>

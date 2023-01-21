@@ -52,9 +52,12 @@ public class HelloController {
     }
     
     @GetMapping(path="/search")
-    public String search(Model model) {
+    public String search(Model model, @AuthenticationPrincipal RegisteringAdapter registeringAdapter) {
     	List<Registering> registerings = registeringRepository.findAll();
     	model.addAttribute("registeringList", registerings);
+    	
+    	Registering registering = registeringAdapter.getRegistering();
+    	model.addAttribute("registering", registering);
     	return "search";
     }
 }
